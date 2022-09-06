@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"k0xx11.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="github搭建博客">
+<meta property="og:type" content="article">
+<meta property="og:title" content="github从0到1搭建博客">
+<meta property="og:url" content="https://k0xx11.github.io/boke/index.html">
+<meta property="og:site_name" content="k0xx&#39;s Blogs">
+<meta property="og:description" content="github搭建博客">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk1.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexoboke2.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk3.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk4.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk5.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk6.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk7.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk8.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk9.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk10.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk11.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk12.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk13.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk14.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk15.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk16.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk17.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk18.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk19.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk20.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk21.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk22.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk23.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk24.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk25.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk26.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk27.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk28.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk29.png">
+<meta property="article:published_time" content="2022-03-19T14:32:58.000Z">
+<meta property="article:modified_time" content="2022-04-16T03:34:29.040Z">
+<meta property="article:author" content="k0xx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk1.png">
+
+<link rel="canonical" href="https://k0xx11.github.io/boke/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>github从0到1搭建博客 | k0xx's Blogs</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">k0xx's Blogs</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">学就行动</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://k0xx11.github.io/boke/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="k0xx">
+      <meta itemprop="description" content="整就牛">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="k0xx's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          github从0到1搭建博客
+        </h1>
+
+        <div class="post-meta">
+            
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-03-19 22:32:58" itemprop="dateCreated datePublished" datetime="2022-03-19T22:32:58+08:00">2022-03-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-16 11:34:29" itemprop="dateModified" datetime="2022-04-16T11:34:29+08:00">2022-04-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/hexo%E5%8D%9A%E5%AE%A2/" itemprop="url" rel="index"><span itemprop="name">hexo博客</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="github搭建博客"><a href="#github搭建博客" class="headerlink" title="github搭建博客"></a>github搭建博客</h1><span id="more"></span>
+
+<p>首先需要安装的的是git和node</p>
+<p>os：win7</p>
+<p>Git: v2.31.1</p>
+<p>nodejs: v12.20.1</p>
+<h2 id="1-安装git"><a href="#1-安装git" class="headerlink" title="1.安装git"></a>1.安装git</h2><p>验证是否安装成功：git –version</p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk1.png"></p>
+<h2 id="2-安装node"><a href="#2-安装node" class="headerlink" title="2.安装node"></a>2.安装node</h2><p>验证是否安装成功：node -v，npm -v</p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexoboke2.png"></p>
+<p>Git和node安装成功之后，选择一个盘创建一个文件夹名为:<strong>bg</strong>，然后进入这个文件夹，右键Git Bash here打开进来命令行界面</p>
+<h2 id="3-安装淘宝源"><a href="#3-安装淘宝源" class="headerlink" title="3.安装淘宝源"></a>3.安装淘宝源</h2><blockquote>
+<p> 执行命令：</p>
+<p>npm install -g cnpm –registry=<a target="_blank" rel="noopener" href="https://registry.npmmirror.com/">https://registry.npmmirror.com</a><br>npm config set registry=<a target="_blank" rel="noopener" href="https://registry.npmmirror.com/">https://registry.npmmirror.com</a></p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk3.png"></p>
+<h2 id="4-在bg文件夹安装hexo"><a href="#4-在bg文件夹安装hexo" class="headerlink" title="4.在bg文件夹安装hexo"></a>4.在bg文件夹安装hexo</h2><p>安装命令: cnpm install hexo -g</p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk4.png"></p>
+<p>测试是否安装成功，命令：hexo -v</p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk5.png"></p>
+<h2 id="5-初始文件夹blog"><a href="#5-初始文件夹blog" class="headerlink" title="5.初始文件夹blog"></a>5.初始文件夹blog</h2><blockquote>
+<p>这个blog文件夹就是我们的博客根目录</p>
+<p>初始化一个文件夹，命令：hexo init blog ，下面就是初始化的样子</p>
+</blockquote>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk6.png"></p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk7.png"></p>
+<h2 id="6-在blog也就是博客根目录安装hexo依赖"><a href="#6-在blog也就是博客根目录安装hexo依赖" class="headerlink" title="6.在blog也就是博客根目录安装hexo依赖"></a>6.在blog也就是博客根目录安装hexo依赖</h2><p>cd blog //进入blog目录</p>
+<p>命令: cnpm install –save hexo-deployer-git</p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk8.png"></p>
+<h2 id="7-git配置SSH-key"><a href="#7-git配置SSH-key" class="headerlink" title="7.git配置SSH key"></a>7.git配置SSH key</h2><p>(1)配置ssh</p>
+<blockquote>
+<p>先生成ssh key</p>
+<p>ssh-keygen -t rsa -C “邮箱地址”</p>
+<p>备注：这里的邮件地址是github账号绑定的邮件地址</p>
+</blockquote>
+<p>在根目录kblog输入生成命令：ssh-keygen -t rsa -C “邮箱地址”后。连续回车三次即可。</p>
+<p>可以看到在用户文件夹(C:\Users\host)生成了一个ssh文件夹</p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk9.png"></p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk10.png" style="zoom:80%;" />
+
+<p>进入到ssh文件夹，复制id_rsa.pub文件里全部内容</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk11.png" style="zoom:80%;" />
+
+<p>接着打开github主页，点击个人设置，点击左侧的SSH and GPG keys，点击New SSH key</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk12.png" style="zoom:67%;" />
+
+<p>将id_rsa.pub复制的内容粘贴到key中，title随便起一个就行。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk13.png"></p>
+<p>点击 Add SSH key,会跳出一个页面要求输入你的github账号，输入即可</p>
+<blockquote>
+<p>测试是否成功：</p>
+<p>ssh -T <a href="mailto:&#103;&#x69;&#116;&#64;&#x67;&#x69;&#x74;&#x68;&#117;&#x62;&#46;&#99;&#111;&#109;">&#103;&#x69;&#116;&#64;&#x67;&#x69;&#x74;&#x68;&#117;&#x62;&#46;&#99;&#111;&#109;</a></p>
+</blockquote>
+<p>输入测试命令后，接着输入yes，出现下面这个提示说明成功</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk14.png" style="zoom: 0%;" />
+
+<h2 id="8-进入根目录blg-配置账号和密码"><a href="#8-进入根目录blg-配置账号和密码" class="headerlink" title="8.进入根目录blg 配置账号和密码"></a>8.进入根目录blg 配置账号和密码</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git config --global user.name &quot;xxx&quot; #双引号里面填写你的github用户名</span><br><span class="line">git config --global user.email &quot;xx@qq.com&quot; #双引号里面填写你的github注册邮箱</span><br></pre></td></tr></table></figure>
+
+<h2 id="9-部署到github"><a href="#9-部署到github" class="headerlink" title="9.部署到github"></a>9.部署到github</h2><p>(1)新建一个github仓库</p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk15.png"></p>
+<p><strong>给仓库起名，这里一定要注</strong>意</p>
+<blockquote>
+<p>仓库名称格式：用户名.github.io</p>
+<p>记得选择下面这些选项</p>
+</blockquote>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk16.png" style="zoom:67%;" />
+
+<p>(2)编辑_config.yml,_config.yml文件在博客根目录(blog)文件夹下</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repository: git@github.com:github用户名/xxx.github.io.git--&gt;博客仓库名称</span><br><span class="line">  branch: master //部署到master分支</span><br></pre></td></tr></table></figure>
+
+<p>(3)修改分支名称</p>
+<p>这边我们需要到仓库设置这边修改<strong>Branches分支</strong>，把<strong>main</strong>修改为<strong>master</strong></p>
+<p>点击笔会跳出一个框，要求你输入修改后的名字</p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk17.png"></p>
+<p>输入之后，点击Rename branch 即可修改成功</p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk18.png"></p>
+<p>(4)把文件上传到Github</p>
+<blockquote>
+<p>执行命令 hexo clean&amp;&amp;hexo g&amp;&amp;hexo d</p>
+<p>hexo clean //清除缓存<br>hexo g //生成html文件<br>hexo d //上传到github</p>
+</blockquote>
+<p><strong>部署成功的标识</strong></p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk19.png"></p>
+<p>然后查看博客的样子</p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk20.png"></p>
+<h2 id="10-更换主题"><a href="#10-更换主题" class="headerlink" title="10.更换主题"></a>10.更换主题</h2><h3 id="1-mions主题"><a href="#1-mions主题" class="headerlink" title="(1)mions主题"></a>(1)mions主题</h3><p>mions主题是一个极为简洁的主题，具体看<a target="_blank" rel="noopener" href="https://bkfish.gitee.io/index.html">长亭大佬的博客</a></p>
+<p>源码下载：<a target="_blank" rel="noopener" href="https://github.com/ppoffice/hexo-theme-minos/releases/tag/2.4.0">hexo-theme-minos：一个简单而复古风格的Hexo主题，更专注于你的想法</a></p>
+<p>源码下载好，放到theme文件夹，并重命名为mions</p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk21.png"></p>
+<p>mions需要的包有：</p>
+<p>1.cheerio 安装命令：cnpm install cheerio</p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk22.png"></p>
+<p>2.lodash 安装命令：cnpm install lodash</p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk23.png"></p>
+<p>3.hexo-renderer-sass 安装命令cnpm install hexo-renderer-sass</p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk24.png"></p>
+<p>根目录blog下的_config.yml配置修改</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">增加以下内容</span><br><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## Set your site url here. For example, if you use GitHub Page, set url as &#x27;https://username.github.io/project&#x27;</span></span><br><span class="line">url: https://github用户名.github.io</span><br><span class="line">permalink: :slug/</span><br><span class="line"></span><br><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment"># theme: landscape</span></span><br><span class="line">theme: mions //增加mions主题选择</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>文章加密-hexo-blog-encrypt</strong></p>
+<p>安装命令：cnpm install <a href="mailto:&#104;&#x65;&#x78;&#x6f;&#x2d;&#98;&#x6c;&#111;&#103;&#45;&#101;&#x6e;&#x63;&#x72;&#x79;&#x70;&#116;&#x40;&#50;&#46;&#48;&#x2e;&#x30;">&#104;&#x65;&#x78;&#x6f;&#x2d;&#98;&#x6c;&#111;&#103;&#45;&#101;&#x6e;&#x63;&#x72;&#x79;&#x70;&#116;&#x40;&#50;&#46;&#48;&#x2e;&#x30;</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk25.png"></p>
+<p>themes/mions/_config.yml配置修改</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Website&#x27;s icon url.</span></span><br><span class="line">favicon: /images/favicon.png //图片存放在themes\minos\<span class="built_in">source</span>\images</span><br><span class="line"><span class="comment"># logo:</span></span><br><span class="line"><span class="comment">#   text: &lt;logo string&gt;</span></span><br><span class="line">logo: /images/logo.png //图片存放在themes\minos\<span class="built_in">source</span>\images</span><br><span class="line"></span><br><span class="line"><span class="comment"># example of setting plain text links.</span></span><br><span class="line">navbar_links:</span><br><span class="line">  GitHub:</span><br><span class="line">    icon: fab fa-github</span><br><span class="line">    url: https://github.com/用户名</span><br><span class="line"></span><br><span class="line"><span class="comment"># Links at the bottom of the page.</span></span><br><span class="line">footer_links:</span><br><span class="line">  GitHub: https://github.com/用户名</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="2-next主题"><a href="#2-next主题" class="headerlink" title="(2)next主题"></a>(2)next主题</h3><p>next主题是一个有很多人使用的主题，具体看<a target="_blank" rel="noopener" href="http://zhuabapa.top/">素念大佬的博客</a></p>
+<p>源码下载：<a target="_blank" rel="noopener" href="https://github.com/theme-next/hexo-theme-next/releases/tag/v7.8.0">next7.8</a></p>
+<p>源码下载好，放到themes文件夹，并重命名为next</p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk26.png"></p>
+<p>根目录下的_config.yml配置修改</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">增加以下内容</span><br><span class="line"><span class="comment"># URL</span></span><br><span class="line"><span class="comment">## Set your site url here. For example, if you use GitHub Page, set url as &#x27;https://username.github.io/project&#x27;</span></span><br><span class="line">url: https://github用户名.github.io</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line"></span><br><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment"># theme: landscape</span></span><br><span class="line">theme: next //增加next主题选择</span><br><span class="line"></span><br><span class="line"><span class="comment"># 搜索</span></span><br><span class="line"><span class="comment"># 需要安装的包 cnpm install hexo-generator-search --save</span></span><br><span class="line">search:</span><br><span class="line">  path: search.json</span><br><span class="line">  field: post</span><br><span class="line">  format: html</span><br><span class="line">  <span class="built_in">limit</span>: 1000</span><br><span class="line"></span><br><span class="line"><span class="comment">## 加密</span></span><br><span class="line"><span class="comment"># 需要安装的包 cnpm install hexo-blog-encrypt@2.0.0</span></span><br><span class="line">encrypt:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  <span class="comment"># theme: </span></span><br></pre></td></tr></table></figure>
+
+<p><strong>文章搜索hexo-generator-search</strong></p>
+<p>安装命令：cnpm install hexo-generator-search –save</p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk27.png"></p>
+<p><strong>文章加密-hexo-blog-encrypt</strong></p>
+<p>安装命令：cnpm install <a href="mailto:&#x68;&#101;&#120;&#111;&#45;&#98;&#108;&#111;&#x67;&#45;&#x65;&#110;&#99;&#114;&#121;&#x70;&#x74;&#64;&#50;&#x2e;&#x30;&#x2e;&#48;">&#x68;&#101;&#120;&#111;&#45;&#98;&#108;&#111;&#x67;&#45;&#x65;&#110;&#99;&#114;&#121;&#x70;&#x74;&#64;&#50;&#x2e;&#x30;&#x2e;&#48;</a></p>
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk28.png"></p>
+<p>加密的使用方法</p>
+<figure class="highlight md"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">message: 17张牌你能秒我？//打开文章，显示的文字</span><br><span class="line">abstract: 姿势，什么姿势？//首页改显示的文字</span><br><span class="line">password: password //文章的密码</span><br><span class="line"><span class="section">top: 100 //这个数值越高，置顶第一</span></span><br><span class="line"><span class="section">---</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//hexobk29.png"></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>k0xx
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://k0xx11.github.io/boke/" title="github从0到1搭建博客">https://k0xx11.github.io/boke/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/github+picgo+typora/" rel="prev" title="Github+Picgo+typora搭建图床">
+      <i class="fa fa-chevron-left"></i> Github+Picgo+typora搭建图床
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/vbbox-install-kali/" rel="next" title="VirtualBox安装kali">
+      VirtualBox安装kali <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#github%E6%90%AD%E5%BB%BA%E5%8D%9A%E5%AE%A2"><span class="nav-number">1.</span> <span class="nav-text">github搭建博客</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%AE%89%E8%A3%85git"><span class="nav-number">1.1.</span> <span class="nav-text">1.安装git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%AE%89%E8%A3%85node"><span class="nav-number">1.2.</span> <span class="nav-text">2.安装node</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E5%AE%89%E8%A3%85%E6%B7%98%E5%AE%9D%E6%BA%90"><span class="nav-number">1.3.</span> <span class="nav-text">3.安装淘宝源</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%9C%A8bg%E6%96%87%E4%BB%B6%E5%A4%B9%E5%AE%89%E8%A3%85hexo"><span class="nav-number">1.4.</span> <span class="nav-text">4.在bg文件夹安装hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%88%9D%E5%A7%8B%E6%96%87%E4%BB%B6%E5%A4%B9blog"><span class="nav-number">1.5.</span> <span class="nav-text">5.初始文件夹blog</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-%E5%9C%A8blog%E4%B9%9F%E5%B0%B1%E6%98%AF%E5%8D%9A%E5%AE%A2%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%AE%89%E8%A3%85hexo%E4%BE%9D%E8%B5%96"><span class="nav-number">1.6.</span> <span class="nav-text">6.在blog也就是博客根目录安装hexo依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-git%E9%85%8D%E7%BD%AESSH-key"><span class="nav-number">1.7.</span> <span class="nav-text">7.git配置SSH key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-%E8%BF%9B%E5%85%A5%E6%A0%B9%E7%9B%AE%E5%BD%95blg-%E9%85%8D%E7%BD%AE%E8%B4%A6%E5%8F%B7%E5%92%8C%E5%AF%86%E7%A0%81"><span class="nav-number">1.8.</span> <span class="nav-text">8.进入根目录blg 配置账号和密码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-%E9%83%A8%E7%BD%B2%E5%88%B0github"><span class="nav-number">1.9.</span> <span class="nav-text">9.部署到github</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98"><span class="nav-number">1.10.</span> <span class="nav-text">10.更换主题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-mions%E4%B8%BB%E9%A2%98"><span class="nav-number">1.10.1.</span> <span class="nav-text">(1)mions主题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-next%E4%B8%BB%E9%A2%98"><span class="nav-number">1.10.2.</span> <span class="nav-text">(2)next主题</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="k0xx"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">k0xx</p>
+  <div class="site-description" itemprop="description">整就牛</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">k0xx</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

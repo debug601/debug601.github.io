@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"k0xx11.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
+  </script>
+
+  <meta name="description" content="vbox安装centos">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VirtualBox安装Centos">
+<meta property="og:url" content="https://k0xx11.github.io/vbox-install-centos7/index.html">
+<meta property="og:site_name" content="k0xx&#39;s Blogs">
+<meta property="og:description" content="vbox安装centos">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos1.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos2.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos3.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos4.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos5.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos6.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos7.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos8.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos9.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos10.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos11.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos12.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos13.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp/centos14.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos15.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos16.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos17.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos18.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos20.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos22.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos23.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos24.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos25.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp/ic71.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp/ic72.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp/ic73.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp/ic74.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp/ic75.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp/ic76.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp/ic77.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp/ic78.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos29.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos30.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos31.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos32.png">
+<meta property="article:published_time" content="2022-04-09T14:32:58.000Z">
+<meta property="article:modified_time" content="2022-04-16T03:17:18.754Z">
+<meta property="article:author" content="k0xx">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos1.png">
+
+<link rel="canonical" href="https://k0xx11.github.io/vbox-install-centos7/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>VirtualBox安装Centos | k0xx's Blogs</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">k0xx's Blogs</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">学就行动</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://k0xx11.github.io/vbox-install-centos7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="k0xx">
+      <meta itemprop="description" content="整就牛">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="k0xx's Blogs">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          VirtualBox安装Centos
+        </h1>
+
+        <div class="post-meta">
+            
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2022-04-09 22:32:58" itemprop="dateCreated datePublished" datetime="2022-04-09T22:32:58+08:00">2022-04-09</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2022-04-16 11:17:18" itemprop="dateModified" datetime="2022-04-16T11:17:18+08:00">2022-04-16</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/centos/" itemprop="url" rel="index"><span itemprop="name">centos</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h2 id="vbox安装centos"><a href="#vbox安装centos" class="headerlink" title="vbox安装centos"></a>vbox安装centos</h2><span id="more"></span>
+
+<p>打开vbox虚拟机，点击<strong>新建</strong></p>
+<p>类型选择<strong>Linux</strong> 版本选择 <strong>Red Hat(64-bit)</strong> 因为centos是red hat的一个分支，点下一步</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos1.png" style="zoom:67%;" />
+
+<p>设置内存大小，我给了2G</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos2.png" style="zoom:67%;" />
+
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos3.png" style="zoom:67%;" />
+
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos4.png" style="zoom:67%;" />
+
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos5.png" style="zoom:67%;" />
+
+<p>装载光驱，来到存储这行，点击没有盘片</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos6.png" style="zoom:67%;" />
+
+<p>点击 选择虚拟盘，然后去到你放镜像文件的文件，选择centos镜像就行了</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos7.png" style="zoom:67%;" />
+
+<p>装载镜像成功的样子</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos8.png" style="zoom:67%;" />
+
+<p>点击启动虚拟机，进入centos安装界面，选择 <strong>Install CentOS Linux 7</strong>，回车</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos9.png" style="zoom:67%;" />
+
+<p>选择语言: 中文-&gt;简体中文</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos10.png" style="zoom:67%;" />
+
+<p>选择安装系统的磁盘位置</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos11.png" style="zoom:67%;" />
+
+<p>磁盘默认设置</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos12.png" style="zoom:67%;" />
+
+<p>选择需要安装的软件</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos13.png" style="zoom:67%;" />
+
+<p>选择GNOME桌面，点完成</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp/centos14.png" style="zoom:67%;" />
+
+<p>要改一下时间和时区 要确保是上海并且时间跟你的电脑对的上</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos15.png" style="zoom:67%;" />
+
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos16.png" style="zoom:67%;" />
+
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos17.png" style="zoom:67%;" />
+
+<p>设置ROOT密码</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos18.png" style="zoom:67%;" />
+
+<p>输入密码，点完成即可 <strong>zhu1979</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos20.png" style="zoom:67%;" />
+
+<p>设置好ROOT密码，系统就会自动安装，等30分钟</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos22.png" style="zoom:67%;" />
+
+<p>安装成功后重启 </p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos23.png" style="zoom:67%;" />
+
+<p>点击未接受许可证</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos24.png" style="zoom:67%;" />
+
+<p>勾上同意，点完成，<strong>回到页面点完成配置</strong></p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos25.png" style="zoom:67%;" />
+
+<p>选择汉语，点前进</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp/ic71.png" style="zoom:67%;" />
+
+<p>键盘布局选择英语-美国，点前进</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp/ic72.png" style="zoom:67%;" />
+
+<p>隐私选择关闭，点前进</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp/ic73.png" style="zoom:67%;" />
+
+<p>时区选择上海</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp/ic74.png" style="zoom:67%;" />
+
+<p>在线账号，选择跳过</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp/ic75.png" style="zoom:67%;" />
+
+<p>填写用户名称，点击前进</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp/ic76.png" style="zoom:67%;" />
+
+<p>设置密码，点前进</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp/ic77.png" style="zoom:67%;" />
+
+<p>安装完成</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp/ic78.png" style="zoom:67%;" />
+
+
+
+<blockquote>
+<p>一定要创建快照</p>
+</blockquote>
+<p>vbox centos安装增强功能</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos29.png" style="zoom:67%;" />
+
+<p>点击运行</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos30.png" style="zoom:67%;" />
+
+<p>他需要超级管理员权限才安装，我们输入密码，点认证</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos31.png" style="zoom: 67%;" />
+
+<p>回车退出，再打开命令行输入reboot 重启</p>
+<img src="https://cdn.jsdelivr.net/gh/k0xx11/zp//centos32.png" style="zoom:67%;" />
+
+<p>安装完成，<strong>重启系统生效</strong>。</p>
+<p>使用命令</p>
+<p>su 输入密码之后进入root权限</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>k0xx
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://k0xx11.github.io/vbox-install-centos7/" title="VirtualBox安装Centos">https://k0xx11.github.io/vbox-install-centos7/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/matery-gdy-mhua/" rel="prev" title="hexo-matery 归档页修改">
+      <i class="fa fa-chevron-left"></i> hexo-matery 归档页修改
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/centos7-install-docker/" rel="next" title="Centos安装docker">
+      Centos安装docker <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#vbox%E5%AE%89%E8%A3%85centos"><span class="nav-number">1.</span> <span class="nav-text">vbox安装centos</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="k0xx"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">k0xx</p>
+  <div class="site-description" itemprop="description">整就牛</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">19</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">k0xx</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
