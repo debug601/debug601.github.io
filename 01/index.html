@@ -1,445 +1,1001 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="zh-CN">
+
+
 <head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
-<meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 5.4.2">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
-
-<script id="hexo-configurations">
-    var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"k0xx11.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.json"};
-  </script>
-
-  <meta name="description" content="目标高级红队工程师 2022-2 —-&gt; 2022-9 学习规划 web安全方向学会盲打 学习html+javascript(想深入挖掘xss的威力得把javascript学好) 学习SQL注入时学习以下SQL语句，熟悉常见的增删改查即可 学习常见的owasp10漏洞，熟悉原理和修复方法 学习python3—-&gt;写poc和exp,或者简单的爬虫,基础的脚本 学习php+php代码审计">
-<meta property="og:type" content="article">
-<meta property="og:title" content="学习计划">
-<meta property="og:url" content="https://k0xx11.github.io/01/index.html">
-<meta property="og:site_name" content="k0xx&#39;s Blogs">
-<meta property="og:description" content="目标高级红队工程师 2022-2 —-&gt; 2022-9 学习规划 web安全方向学会盲打 学习html+javascript(想深入挖掘xss的威力得把javascript学好) 学习SQL注入时学习以下SQL语句，熟悉常见的增删改查即可 学习常见的owasp10漏洞，熟悉原理和修复方法 学习python3—-&gt;写poc和exp,或者简单的爬虫,基础的脚本 学习php+php代码审计">
-<meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2032-12-31T23:32:32.000Z">
-<meta property="article:modified_time" content="2022-03-20T00:41:58.375Z">
-<meta property="article:author" content="k0xx">
-<meta name="twitter:card" content="summary">
-
-<link rel="canonical" href="https://k0xx11.github.io/01/">
+    <meta charset="utf-8">
+    <meta name="keywords" content="学习计划, k0xx&#39;s Blogs">
+    <meta name="description" content="整就牛">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-<script id="page-configurations">
-  // https://hexo.io/docs/variables.html
-  CONFIG.page = {
-    sidebar: "",
-    isHome : false,
-    isPost : true,
-    lang   : 'zh-CN'
-  };
-</script>
+    <title>学习计划 | k0xx&#39;s Blogs</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
 
-  <title>学习计划 | k0xx's Blogs</title>
-  
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
 
 
 
 
-
-
-  <noscript>
-  <style>
-  .use-motion .brand,
-  .use-motion .menu-item,
-  .sidebar-inner,
-  .use-motion .post-block,
-  .use-motion .pagination,
-  .use-motion .comments,
-  .use-motion .post-header,
-  .use-motion .post-body,
-  .use-motion .collection-header { opacity: initial; }
-
-  .use-motion .site-title,
-  .use-motion .site-subtitle {
-    opacity: initial;
-    top: initial;
-  }
-
-  .use-motion .logo-line-before i { left: initial; }
-  .use-motion .logo-line-after i { right: initial; }
-  </style>
-</noscript>
-
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage">
-  <div class="container use-motion">
-    <div class="headband"></div>
-
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="切换导航栏">
-      <span class="toggle-line toggle-line-first"></span>
-      <span class="toggle-line toggle-line-middle"></span>
-      <span class="toggle-line toggle-line-last"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <span class="logo-line-before"><i></i></span>
-      <h1 class="site-title">k0xx's Blogs</h1>
-      <span class="logo-line-after"><i></i></span>
-    </a>
-      <p class="site-subtitle" itemprop="description">学就行动</p>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-        <i class="fa fa-search fa-fw fa-lg"></i>
-    </div>
-  </div>
-</div>
-
-
-
-
-<nav class="site-nav">
-  <ul id="menu" class="main-menu menu">
-        <li class="menu-item menu-item-home">
-
-    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
-
-  </li>
-        <li class="menu-item menu-item-about">
-
-    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
-
-  </li>
-        <li class="menu-item menu-item-tags">
-
-    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
-
-  </li>
-        <li class="menu-item menu-item-categories">
-
-    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
-
-  </li>
-        <li class="menu-item menu-item-archives">
-
-    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
-
-  </li>
-      <li class="menu-item menu-item-search">
-        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
-        </a>
-      </li>
-  </ul>
-</nav>
-
-
-
-  <div class="search-pop-overlay">
-    <div class="popup search-popup">
-        <div class="search-header">
-  <span class="search-icon">
-    <i class="fa fa-search"></i>
-  </span>
-  <div class="search-input-container">
-    <input autocomplete="off" autocapitalize="off"
-           placeholder="搜索..." spellcheck="false"
-           type="search" class="search-input">
-  </div>
-  <span class="popup-btn-close">
-    <i class="fa fa-times-circle"></i>
-  </span>
-</div>
-<div id="search-result">
-  <div id="no-result">
-    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
-  </div>
-</div>
-
-    </div>
-  </div>
-
-</div>
-    </header>
-
-    
-
-
-    <main class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          
-
-          <div class="content post posts-expand">
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">k0xx&#39;s Blogs</span>
+                </a>
+            </div>
             
 
-    
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
   
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://k0xx11.github.io/01/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="k0xx">
-      <meta itemprop="description" content="整就牛">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="k0xx's Blogs">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          学习计划
-        </h1>
-
-        <div class="post-meta">
-            
-            <i class="fa fa-thumb-tack" aria-hidden="true"></i>
-            <font color="#999">置顶</font>
-            <span class="post-meta-divider">|</span>
-          
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2033-01-01 07:32:32" itemprop="dateCreated datePublished" datetime="2033-01-01T07:32:32+08:00">2033-01-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-03-20 08:41:58" itemprop="dateModified" datetime="2022-03-20T08:41:58+08:00">2022-03-20</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
+  <li class="hide-on-med-and-down nav-item">
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+    <a href="/" class="waves-effect waves-light">
       
-        <p><strong>目标高级红队工程师</strong></p>
-<p>2022-2 —-&gt; 2022-9 学习规划</p>
-<h2 id="web安全方向"><a href="#web安全方向" class="headerlink" title="web安全方向"></a>web安全方向</h2><p><strong>学会盲打</strong></p>
-<p>学习html+javascript(想深入挖掘xss的威力得把javascript学好)</p>
-<p>学习SQL注入时学习以下SQL语句，熟悉常见的增删改查即可</p>
-<p>学习常见的owasp10漏洞，熟悉原理和修复方法</p>
-<p>学习python3—-&gt;写poc和exp,或者简单的爬虫,基础的脚本</p>
-<p>学习php+php代码审计</p>
-<p>方法：”暗月教程+经典的安全书籍(web安全深度刨析)是最快的入门方法”</p>
-<p>学习正则表达式，这个真的很有用啊！强烈推荐</p>
-<p>入门先练DVWA，练得熟熟的，<br>然后就开始打vulnhub的靶机，<br>先从语言入手，工具多练靶场就会了<br>记住能短期学会的技术都不值钱</p>
-<p>在学习漏洞的过程中，可以去火线或者教育src挖掘一下漏洞</p>
-<p>遇到不会的百度即可</p>
-<p>不要浪费自己的激情，看书学，遇到不会再查文章学习，</p>
-<p>进阶：学习代码审计</p>
-<blockquote>
-<p>在学习过程中要形成自己的知识体系</p>
-</blockquote>
-<p>==========================================================</p>
-<p>看web安全的书，看的过程中，缺啥补啥</p>
-<p>先学着安全，然后再慢慢补知识</p>
-<blockquote>
-<p>边学安全边补基础</p>
-</blockquote>
-<p>==========================================================</p>
-<p>有兴趣有激情的时候赶紧搞，等磨没了就没了</p>
-<p>==========================================================</p>
-<p>读书顺序</p>
-<p>1.白帽子讲web安全<br>2.黑客攻防技术宝典-web实战指南第2版<br>3.web前端黑客技术解密<br>4.web之困</p>
-<p>==========================================================</p>
-<h2 id="内网安全方向"><a href="#内网安全方向" class="headerlink" title="内网安全方向"></a>内网安全方向</h2><p>推荐书籍 《内网安全攻防  渗透测试实战指南》</p>
-<p>打通web安全和内网安全可以找实习了</p>
-<p>=====================================================================</p>
-<h2 id="逆向"><a href="#逆向" class="headerlink" title="逆向"></a>逆向</h2><p>看着就真的看着，不学就真的5</p>
-
-    </div>
-
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
     
-    
-    
-        
-
-<div>
-<ul class="post-copyright">
-  <li class="post-copyright-author">
-    <strong>本文作者： </strong>k0xx
   </li>
-  <li class="post-copyright-link">
-    <strong>本文链接：</strong>
-    <a href="https://k0xx11.github.io/01/" title="学习计划">https://k0xx11.github.io/01/</a>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
   </li>
-  <li class="post-copyright-license">
-    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
   </li>
 </ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">k0xx&#39;s Blogs</div>
+        <div class="logo-desc">
+            
+            整就牛
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
 </div>
 
 
-      <footer class="post-footer">
+        </div>
 
         
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
 
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
 
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
         
-    <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/win-install-composer/" rel="prev" title="win安装composer">
-      <i class="fa fa-chevron-left"></i> win安装composer
-    </a></div>
-      <div class="post-nav-item">
-    <a href="/xss/" rel="next" title="学习计划">
-      学习计划 <i class="fa fa-chevron-right"></i>
-    </a></div>
-    </div>
-      </footer>
+    </nav>
+
+</header>
+
     
-  </article>
-  
-  
-  
 
 
 
-          </div>
-          
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">学习计划</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2033-01-01
+                </div>
+                
+
+                
+
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <link href="/style.css" rel="stylesheet" type="text/css"><script src="/crypto-js.js"></script><script src="/mcommon.js"></script><script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script> <div id="security"> <div> <div class="input-container"> <input type="password" class="form-control" id="pass" placeholder=" 17张牌你能秒我？ "/> <label for="pass"> 17张牌你能秒我？ </label> <div class="bottom-line"></div> </div> </div> </div> <div id="encrypt-blog" style="display:none"> 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 </div>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">k0xx</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://k0xx11.github.io/01/">https://k0xx11.github.io/01/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">k0xx</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
-  window.addEventListener('tabs:register', () => {
-    let { activeClass } = CONFIG.comments;
-    if (CONFIG.comments.storage) {
-      activeClass = localStorage.getItem('comments_active') || activeClass;
-    }
-    if (activeClass) {
-      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
-      if (activeTab) {
-        activeTab.click();
-      }
-    }
-  });
-  if (CONFIG.comments.storage) {
-    window.addEventListener('tabs:click', event => {
-      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
-      let commentClass = event.target.classList[1];
-      localStorage.setItem('comments_active', commentClass);
+    $(function () {
+        $('.tabs').tabs();
     });
-  }
 </script>
 
+            
         </div>
-          
-  
-  <div class="toggle sidebar-toggle">
-    <span class="toggle-line toggle-line-first"></span>
-    <span class="toggle-line toggle-line-middle"></span>
-    <span class="toggle-line toggle-line-last"></span>
-  </div>
+    </div>
 
-  <aside class="sidebar">
-    <div class="sidebar-inner">
+    
 
-      <ul class="sidebar-nav motion-element">
-        <li class="sidebar-nav-toc">
-          文章目录
-        </li>
-        <li class="sidebar-nav-overview">
-          站点概览
-        </li>
-      </ul>
+    
 
-      <!--noindex-->
-      <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#web%E5%AE%89%E5%85%A8%E6%96%B9%E5%90%91"><span class="nav-number">1.</span> <span class="nav-text">web安全方向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%86%85%E7%BD%91%E5%AE%89%E5%85%A8%E6%96%B9%E5%90%91"><span class="nav-number">2.</span> <span class="nav-text">内网安全方向</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%86%E5%90%91"><span class="nav-number">3.</span> <span class="nav-text">逆向</span></a></li></ol></div>
-      </div>
-      <!--/noindex-->
+    
 
-      <div class="site-overview-wrap sidebar-panel">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="k0xx"
-      src="/images/avatar.jpg">
-  <p class="site-author-name" itemprop="name">k0xx</p>
-  <div class="site-description" itemprop="description">整就牛</div>
-</div>
-<div class="site-state-wrap motion-element">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-          <a href="/archives/">
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
         
-          <span class="site-state-item-count">19</span>
-          <span class="site-state-item-name">日志</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-            <a href="/categories/">
-          
-        <span class="site-state-item-count">8</span>
-        <span class="site-state-item-name">分类</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-            <a href="/tags/">
-          
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">标签</span></a>
-      </div>
-  </nav>
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/xss/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="学习计划">
+                        
+                        <span class="card-title">学习计划</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2035-01-01
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            k0xx
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/win-install-composer/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="win安装composer">
+                        
+                        <span class="card-title">win安装composer</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            composer下载地址: https://getcomposer.org/download/
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-06
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/PHP/" class="post-category">
+                                    PHP
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
 </div>
 
 
 
-      </div>
-        <div class="back-to-top motion-element">
-          <i class="fa fa-arrow-up"></i>
-          <span>0%</span>
-        </div>
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
 
     </div>
-  </aside>
-  <div id="sidebar-dimmer"></div>
-
-
-      </div>
-    </main>
-
-    <footer class="footer">
-      <div class="footer-inner">
-        
-
-        
-
-<div class="copyright">
-  
-  &copy; 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">k0xx</span>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
-  </div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
 
         
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2022</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">k0xx</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/blinkfox" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1181062873@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
 
 
 
@@ -447,36 +1003,9 @@
 
 
 
-
-      </div>
-    </footer>
-  </div>
-
-  
-  <script src="/lib/anime.min.js"></script>
-  <script src="/lib/velocity/velocity.min.js"></script>
-  <script src="/lib/velocity/velocity.ui.min.js"></script>
-
-<script src="/js/utils.js"></script>
-
-<script src="/js/motion.js"></script>
-
-
-<script src="/js/schemes/pisces.js"></script>
-
-
-<script src="/js/next-boot.js"></script>
-
-
-
-
-  
-
-
-
-
-  
-<script src="/js/local-search.js"></script>
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1181062873" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1181062873" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
 
 
 
@@ -484,15 +1013,176 @@
 
 
 
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
 
 
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
 
 
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
 
+    <!-- Baidu Analytics -->
 
-  
+    <!-- Baidu Push -->
 
-  
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
 
 </body>
+
 </html>
