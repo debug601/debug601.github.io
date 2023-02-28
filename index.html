@@ -264,6 +264,115 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://debug601.github.io/firmadyne-install/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Debug">
+      <meta itemprop="description" content="整就牛">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Debug's Blogs">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/firmadyne-install/" class="post-title-link" itemprop="url">firmadyne环境搭建</a>
+        </h2>
+
+        <div class="post-meta">
+            
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-02-28 17:12:22 / 修改时间：17:12:16" itemprop="dateCreated datePublished" datetime="2023-02-28T17:12:22+08:00">2023-02-28</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/IOT%E5%AE%89%E5%85%A8/" itemprop="url" rel="index"><span itemprop="name">IOT安全</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>老版本安装成功</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Ubuntu16.04 86位</span><br><span class="line">Linux pwn 4.15.0-45-generic #48~16.04.1-Ubuntu SMP Tue Jan 29 18:03:19 UTC 2019 i686 i686 i686 GNU/Linux</span><br><span class="line">python2.7</span><br></pre></td></tr></table></figure>
+
+
+
+<p>先把老版本的拉下来</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> --recursive https://github.com/liyansong2018/Old-Firmware-Analysis-Toolkit</span><br><span class="line">//我拉的时候，由于网速问题经常会拉一半断开</span><br><span class="line">可以选择下载压缩包下来,解压就可以使用了</span><br><span class="line">https://github.com/liyansong2018/Old-Firmware-Analysis-Toolkit/releases/tag/1.1 //压缩包地址</span><br><span class="line"></span><br><span class="line">下载的压缩包没有binaries目录,从github仓库拉下来的有</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装pip"><a href="#安装pip" class="headerlink" title="安装pip"></a>安装pip</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install python-pip</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装Firmadyne"><a href="#安装Firmadyne" class="headerlink" title="安装Firmadyne"></a>安装Firmadyne</h3><p>安装依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install busybox-static fakeroot git dmsetup kpartx netcat-openbsd nmap python-psycopg2 python3-psycopg2 snmp uml-utilities util-linux vlan</span><br></pre></td></tr></table></figure>
+
+<p>因为firmadyne里的download.sh下载源在国外，需要翻墙，这里直接用被人已经下载好的binaries即可。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/liyansong2018/Firmadyne-binaries.git</span><br><span class="line">git后替换Firmadyne目录内的binaries即可。</span><br></pre></td></tr></table></figure>
+
+<p>下载好之后替换掉Firmadyne目录内的binaries。使用复制方式</p>
+<p>再安装其他依赖</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo -H pip install git+https://github.com/ahupp/python-magic //如果安装不了，就重启系统，再安装即可</span><br><span class="line">sudo -H pip install git+https://github.com/sviehb/jefferson //如果安装不了，就重启系统，再安装即可</span><br><span class="line">sudo apt-get install qemu-system-arm qemu-system-mips qemu-system-x86 qemu-utils</span><br><span class="line"></span><br><span class="line">得安装pexpect</span><br><span class="line">访问https://pypi.python.org/pypi/pexpect //下载压缩包，拉到ubuntu解压</span><br><span class="line">tar -xzvf 压缩包名称</span><br><span class="line">进入解压文件夹，执行安装目录</span><br><span class="line">sudo python ./setup.py install</span><br><span class="line">安装ptyprocess</span><br><span class="line">访问https://pypi.python.org/pypi/ptyprocess<span class="comment">#downloads //下载压缩包,拉到ubuntu解压</span></span><br><span class="line">tar -xzvf 压缩包名称</span><br><span class="line">进入解压文件夹，执行安装目录</span><br><span class="line">sudo python ./setup.py install</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="安装-sasquatch"><a href="#安装-sasquatch" class="headerlink" title="安装 sasquatch"></a>安装 sasquatch</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get install build-essential liblzma-dev liblzo2-dev zlib1g-dev</span><br><span class="line">git clone https://github.com/debug601/sasquatch</span><br><span class="line">cd sasquatch</span><br><span class="line">./build.sh</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装binwalk"><a href="#安装binwalk" class="headerlink" title="安装binwalk"></a>安装binwalk</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install build-essential autoconf git //执行完上面两条命令再执行下面的</span><br><span class="line"></span><br><span class="line">将Old-Firmware-Analysis-Toolkit文件夹的binwalk替换为binwalk2.2版本并将binwalk文件夹下面的deps.sh文件某部分进行修改</span><br><span class="line">修改如下:</span><br><span class="line">搜索function install_sasquatch</span><br><span class="line">将git链接替换为: git clone https://github.com/debug601/sasquatch</span><br><span class="line">----------------------------------------------------------</span><br><span class="line"></span><br><span class="line">sudo apt-get remove python-pip //删除pip,但是安装的库还会存在，应对长洪报错使用</span><br><span class="line">sudo apt-get install python-pip</span><br><span class="line">sudo python -m pip install --upgrade pip==19.0 //把pip升级到19.0版本</span><br><span class="line"></span><br><span class="line">git clone https://github.com/devttys0/binwalk.git //执行改文件夹的deps.sh文件看看补丁</span><br><span class="line">//以下的包全部得安装</span><br><span class="line">sudo apt-get install python-lzma python-crypto</span><br><span class="line">sudo apt-get install libqt4-opengl python-opengl python-qt4 python-qt4-gl python-numpy python-scipy python-pip</span><br><span class="line"></span><br><span class="line">sudo apt-get install git build-essential libqt4-opengl mtd-utils gzip bzip2 tar arj lhasa p7zip p7zip-full cabextract cramfsswap squashfs-tools zlib1g-dev liblzma-dev liblzo2-dev sleuthkit default-jdk lzop srecord cpio python-crypto python-lzo python-lzma python-pip python-tk</span><br><span class="line"></span><br><span class="line">sudo pip install pyqtgraph = sudo apt-get install python-pyqtgraph</span><br><span class="line">sudo apt-get install python-pip</span><br><span class="line">sudo apt-get install python-capstone</span><br><span class="line">sudo pip install capstone</span><br><span class="line">sudo apt-get install python-pyqtgraph</span><br><span class="line">sudo apt-get install python-matplotlib</span><br><span class="line">sudo pip install PyQt5</span><br><span class="line">sudo apt-get install mtd-utils gzip bzip2 tar arj lhasa p7zip p7zip-full cabextract cramfsprogs cramfsswap squashfs-tools cramfsprogs</span><br><span class="line">sudo apt-get install python3-crypto python3-pip python3-tk</span><br><span class="line"></span><br><span class="line">sudo python setup.py install</span><br><span class="line">sudo ./deps.sh //安装完上面的包，执行这个sh文件</span><br><span class="line"></span><br><span class="line">//使用python2安装哦</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="安装postgresql"><a href="#安装postgresql" class="headerlink" title="安装postgresql"></a>安装postgresql</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt-get install postgresql</span><br><span class="line">sudo -u postgres createuser -P firmadyne //回车会要求你输入两次密码，输入firmadyne即可</span><br><span class="line">sudo -u postgres createdb -O firmadyne firmware</span><br><span class="line">sudo -u postgres psql -d firmware &lt; ./firmadyne/database/schema  （schema具体路径可以在文件内<span class="built_in">pwd</span>查找）</span><br></pre></td></tr></table></figure>
+
+<p>创建时会提示输密码，就使用firmadyne作为密码方便使用。</p>
+<h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p>修改firmadyne文件夹的firmadyne.config文件，修改成绝对路径。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//这块本来是注释掉的</span><br><span class="line"><span class="string">&#x27;&#x27;</span><span class="string">&#x27;</span></span><br><span class="line"><span class="string"># uncomment and specify full path to FIRMADYNE repository</span></span><br><span class="line"><span class="string">#FIRMWARE_DIR=/home/vagrant/firmadyne/</span></span><br><span class="line"><span class="string">&#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line">//我们强调<span class="comment">#号注释,把FIRMWARE_DIR的路径替换成我们真实的firmadyne路径即可</span></span><br><span class="line"><span class="comment"># uncomment and specify full path to FIRMADYNE repository</span></span><br><span class="line">FIRMWARE_DIR=/home/f5/Old-Firmware-Analysis-Toolkit/firmadyne //将这块修改成你真实的firmadyne路径</span><br></pre></td></tr></table></figure>
+
+<p>将firmware-analysis-toolkit根目录下的两个脚本文件fat.py和reset.py ，拷贝到 firmadyne 目录下。并修改 。主要修改如下，root-pass 修改成你当前系统用户的密码，firmadyne_pass 是其在 postgresql 数据库中的账号密码(修改成firmadyne)。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">//修改fat.py文件</span><br><span class="line"><span class="comment">#Configurations - change this according to your system</span></span><br><span class="line">firmadyne_path = <span class="string">&quot;/home/f5/Old-Firmware-Analysis-Toolkit/firmadyne&quot;</span> //修改成你firmadyne的真实目录</span><br><span class="line">binwalk_path = <span class="string">&quot;/usr/local/bin/binwalk&quot;</span> //保留</span><br><span class="line">root_pass = <span class="string">&quot;123com&quot;</span> //修改成你目前系统的root密码</span><br><span class="line">firmadyne_pass = <span class="string">&quot;firmadyne&quot;</span> //修改成firmadyne</span><br><span class="line"></span><br><span class="line">//修改reset.py文件</span><br><span class="line"><span class="comment"># Change the root password according to your system</span></span><br><span class="line">root_pass = <span class="string">&quot;123.com&quot;</span> //修改成你目前系统的root密码</span><br><span class="line">firm_pass = <span class="string">&quot;firmadyne&quot;</span> //修改成firmadyne</span><br></pre></td></tr></table></figure>
+
+
+
+<p>使用FAT</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">进入firmadyne路径，执行以下命令</span><br><span class="line">python fat.py 固件的绝对路径 //开启FAT</span><br><span class="line">python fat.py 固件名称即可 //或者也可以把固件防止firmadyne的目录,开启FAT</span><br><span class="line">python reset.py //清除掉之前模拟固件留下的缓存,建议每此开启之前都执行一次</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://debug601.github.io/java-evc/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -910,90 +1019,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://debug601.github.io/centos-update-yum-yuan/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpg">
-      <meta itemprop="name" content="Debug">
-      <meta itemprop="description" content="整就牛">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Debug's Blogs">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/centos-update-yum-yuan/" class="post-title-link" itemprop="url">Centos更新yum源</a>
-        </h2>
-
-        <div class="post-meta">
-            
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2022-04-14 16:32:58" itemprop="dateCreated datePublished" datetime="2022-04-14T16:32:58+08:00">2022-04-14</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2022-04-15 13:18:01" itemprop="dateModified" datetime="2022-04-15T13:18:01+08:00">2022-04-15</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/centos/" itemprop="url" rel="index"><span itemprop="name">centos</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <blockquote>
-<p>更新yum源的前提是得把网络配置好，配置网络参考</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/centos-update-yum-yuan/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1065,14 +1090,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">18</span>
+          <span class="site-state-item-count">19</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
   </nav>
