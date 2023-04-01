@@ -290,7 +290,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-04-01 20:19:27 / 修改时间：20:18:29" itemprop="dateCreated datePublished" datetime="2023-04-01T20:19:27+08:00">2023-04-01</time>
+              <time title="创建时间：2023-04-01 20:19:27 / 修改时间：20:22:10" itemprop="dateCreated datePublished" datetime="2023-04-01T20:19:27+08:00">2023-04-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -313,79 +313,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h3 id="Docker安装"><a href="#Docker安装" class="headerlink" title="Docker安装"></a>Docker安装</h3><h4 id="Ubuntu-Centos安装Docker"><a href="#Ubuntu-Centos安装Docker" class="headerlink" title="Ubuntu/Centos安装Docker"></a>Ubuntu/Centos安装Docker</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">curl -fsSL get.docker.com -o get-docker.sh</span><br><span class="line">sudo sh get-docker.sh --mirror Aliyun</span><br></pre></td></tr></table></figure>
-
-<p>//后面可能会进行修改</p>
-<h4 id="Kali-Debian安装Docker"><a href="#Kali-Debian安装Docker" class="headerlink" title="Kali/Debian安装Docker"></a>Kali/Debian安装Docker</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 添加Docker PGP密钥</span></span><br><span class="line">curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -</span><br><span class="line"></span><br><span class="line"><span class="comment"># 配置docker apt源 我这里用的国内阿里云的docker下载源</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;deb https://mirrors.aliyun.com/docker-ce/linux/debian buster stable&#x27;</span>&gt; /etc/apt/sources.list.d/docker.list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新apt源</span></span><br><span class="line">apt update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 如果之前安装了docker的话 这里得卸载旧版本docker</span></span><br><span class="line">apt remove docker docker-engine docker.io</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装docker</span></span><br><span class="line">apt install docker-ce</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看版本</span></span><br><span class="line">docker version</span><br></pre></td></tr></table></figure>
-
-<p>//后面可能会进行修改</p>
-<h4 id="开机自启"><a href="#开机自启" class="headerlink" title="开机自启"></a>开机自启</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> docker</span><br><span class="line">sudo systemctl start docker</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="Docker基础命令"><a href="#Docker基础命令" class="headerlink" title="Docker基础命令"></a>Docker基础命令</h3><h4 id="搜索镜像"><a href="#搜索镜像" class="headerlink" title="搜索镜像"></a>搜索镜像</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker search 关键字 </span><br><span class="line">eg:docker search php</span><br></pre></td></tr></table></figure>
-
-<h4 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker pull 镜像名 </span><br><span class="line">eg: docker pull demo/php5</span><br></pre></td></tr></table></figure>
-
-<h4 id="查看已经下载的镜像列表"><a href="#查看已经下载的镜像列表" class="headerlink" title="查看已经下载的镜像列表"></a>查看已经下载的镜像列表</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
-
-<h4 id="Docker-run运行docker镜像-创建新容器"><a href="#Docker-run运行docker镜像-创建新容器" class="headerlink" title="Docker run运行docker镜像,创建新容器"></a>Docker run运行docker镜像,创建新容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d 镜像名 //创建容器</span><br><span class="line">eg: docker run -d sql</span><br><span class="line">docker run --name 容器名 镜像名/镜像ID</span><br><span class="line">docker run --name sql -d mysql</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker run -d 镜像名 //运行docker镜像,创建新容器</span><br><span class="line">-p 映射端口 8080:80 物理机端口:容器端口 把容器的80端口映射到虚拟机的8080端口</span><br><span class="line">-d 指定镜像,使用-d时,容器会自动进入后台,如果下进入容器内部</span><br><span class="line">--name 为容器指定一个名称 eg: --name hhh</span><br><span class="line">-e 设置环境变量 eg: -e MYSQL_ROOT_PASSWORD=root 设置mysql的root用户密码为root</span><br><span class="line"></span><br><span class="line">docker <span class="built_in">exec</span> -it 容器ID /bin/sh //alpine linux系统的sh启动方式</span><br><span class="line">docker <span class="built_in">exec</span> -it 容器ID /bin/bash //常见linux系统的sh启动方式</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">docker run -p 8080:80 --name lamps -e MYSQL_ROOT_PASSWORD=root -d lamp</span><br><span class="line">docker run -p 指定端口 --name 运行之后的镜像名 -e MYSQL_ROOT_PASSWORD=root -d 指定镜像名</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="查看当前容器"><a href="#查看当前容器" class="headerlink" title="查看当前容器"></a>查看当前容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
-
-<h4 id="统计信息"><a href="#统计信息" class="headerlink" title="统计信息"></a>统计信息</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker status</span><br></pre></td></tr></table></figure>
-
-<h4 id="启动容器"><a href="#启动容器" class="headerlink" title="启动容器"></a>启动容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker start 容器名/容器ID</span><br><span class="line">eg: docker start sql/abc</span><br></pre></td></tr></table></figure>
-
-<h4 id="重启容器"><a href="#重启容器" class="headerlink" title="重启容器"></a>重启容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker restart 容器名/容器ID</span><br><span class="line">eg: docker restart sql/abc</span><br></pre></td></tr></table></figure>
-
-<h4 id="终止容器-关闭容器"><a href="#终止容器-关闭容器" class="headerlink" title="终止容器 /关闭容器"></a>终止容器 /关闭容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker stop 容器名/容器ID</span><br><span class="line">eg: docker stop sql/abc</span><br></pre></td></tr></table></figure>
-
-<h4 id="停止所有正在运行的容器"><a href="#停止所有正在运行的容器" class="headerlink" title="停止所有正在运行的容器"></a>停止所有正在运行的容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker stop $(docker ps -aq)</span><br></pre></td></tr></table></figure>
-
-<h4 id="进入容器内部-连接容器"><a href="#进入容器内部-连接容器" class="headerlink" title="进入容器内部/连接容器"></a>进入容器内部/连接容器</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it 容器名/容器ID /bin/bash</span><br><span class="line">eg: docker <span class="built_in">exec</span> -it sql/abc /bin/bash //ubuntu系统</span><br><span class="line">docker <span class="built_in">exec</span> -it sql/abc /bin/sh //alpine系统</span><br></pre></td></tr></table></figure>
-
-<h4 id="删除容器"><a href="#删除容器" class="headerlink" title="删除容器"></a>删除容器</h4><blockquote>
-<p>前提: 得先关闭想要删除的容器</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">rm</span> 容器名/容器ID</span><br><span class="line">eg: docker <span class="built_in">rm</span> sql/ab1ccc</span><br></pre></td></tr></table></figure>
-
-<h4 id="删除所有容器"><a href="#删除所有容器" class="headerlink" title="删除所有容器"></a>删除所有容器</h4><blockquote>
-<p>前提: 得想关闭所有正在运行的容器</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">rm</span> $(docker ps -aq)</span><br></pre></td></tr></table></figure>
-
-<h4 id="删除镜像"><a href="#删除镜像" class="headerlink" title="删除镜像"></a>删除镜像</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker rmi 镜像名/镜像ID(images <span class="built_in">id</span>)</span><br><span class="line">eg: docker rmi sql/ababab11</span><br></pre></td></tr></table></figure>
-
-<h4 id="删除所有镜像"><a href="#删除所有镜像" class="headerlink" title="删除所有镜像"></a>删除所有镜像</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker rmi $(docker images -q)</span><br></pre></td></tr></table></figure>
-
-<h4 id="容器相互复制文件"><a href="#容器相互复制文件" class="headerlink" title="容器相互复制文件"></a>容器相互复制文件</h4><p>(1)复制容器的文件到虚拟机</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">cp</span> 83db10b340c3:/etc/apache2/httpd.conf /home //虚拟机执行</span><br><span class="line">docker <span class="built_in">cp</span> 容器<span class="built_in">id</span>:文件路径 虚拟机 路径</span><br></pre></td></tr></table></figure>
-
-<p>(2)复制物理机的文件到容器内</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker <span class="built_in">cp</span> hss 69daf8de7c49:/var/www/localhost/htdocs/ //复制当前目录下的hss文件夹到容器的/var/www/localhost/htdocs/路径下</span><br><span class="line">docker <span class="built_in">cp</span> 文件名 容器<span class="built_in">id</span>:复制到的路径 //前提，物理机必须进入文件的目录</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="端口映射"><a href="#端口映射" class="headerlink" title="端口映射"></a>端口映射</h4><p>部署一个容器，并将 8080 端口映射到宿主机的 8888 端口上</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 可以使用--name 自定义部署的容器名</span></span><br><span class="line">docker run -d -p 8888:8080 --name 容器名 镜像名</span><br><span class="line">eg: docker run -d -p 8888:8080 --name sql1 sql</span><br><span class="line"><span class="comment"># 可以直接通用镜像部署</span></span><br><span class="line">docker run -d -p 8888:8080 镜像名</span><br><span class="line">eg: docker run -d -p 8888:8080 sql</span><br></pre></td></tr></table></figure>
-
-
-
-<h4 id="dockerfile部署镜像"><a href="#dockerfile部署镜像" class="headerlink" title="dockerfile部署镜像"></a>dockerfile部署镜像</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 前提：得先进入dockerfile所在的文件夹内</span></span><br><span class="line">docker build -t 自定义镜像名称 .</span><br><span class="line">eg: docker build -t sql .</span><br></pre></td></tr></table></figure>
-
-<h4 id="docker-commit"><a href="#docker-commit" class="headerlink" title="docker commit"></a>docker commit</h4><p>docker commit 从容器创建一个新的镜像</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">docker commit -a <span class="string">&quot;提交镜像的作者&quot;</span> -m <span class="string">&quot;提交时的说明文字&quot;</span> 容器ID 镜像名称:版本</span><br><span class="line">docker commit -a <span class="string">&quot;dockers&quot;</span> -m <span class="string">&quot;big demo&quot;</span> ghhshhhh demo1:0.1</span><br><span class="line">-a //必要</span><br><span class="line">-m //可选</span><br></pre></td></tr></table></figure>
-
-
-
-<h3 id="Dockerfile编写"><a href="#Dockerfile编写" class="headerlink" title="Dockerfile编写"></a>Dockerfile编写</h3><p>待补充</p>
-<h3 id="Docker-compose"><a href="#Docker-compose" class="headerlink" title="Docker compose"></a>Docker compose</h3><p>待补充</p>
-
+          <p>day1</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/docker--study/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
